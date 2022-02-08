@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <h2 style="color: blue">{{message}} , VueJS！</h2>
+  <!-- v-text="表达式" 将表达式以text文本格式解析，并替换掉标签中的内容，不常用、不灵活 -->
+  <h2 style="color: blue" v-text="message"> ， VueJS！</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      message: "你好！"
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+
+</body>
+</html>

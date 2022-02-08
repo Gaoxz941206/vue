@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <!-- 对 带有“v-cloak”属性的对象进行控制 -->
+  <style>
+    [v-cloak]{
+      display: none;
+    }
+  </style>
+
+</head>
+<body>
+
+<div id="test01">
+  <h2 style="color: blue" v-cloak>{{message}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+  setTimeout(function () {  //对以下代码进行延迟操作，模拟网络延迟
+    /*
+        vue 在对dom进行解析时，会将dom中的属性删除
+     */
+    const vue1 = new Vue({
+      el: '#test01',
+      data: {
+        message: "你好啊！"
+      },
+      methods: {
+
+      }
+    });
+  }, 1500)
+
+
+</script>
+
+
+</body>
+</html>

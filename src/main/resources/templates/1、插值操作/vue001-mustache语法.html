@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mustache语法</title>
+</head>
+<body>
+
+<div id="test01">
+  <!-- 简单的插值操作-->
+  <h2 style="color: red">{{message}}</h2>
+  <!-- 多个{{}} -->
+  <h2 style="color: blue">姓名：{{name}} ， 年龄：{{age}} , 性别：{{sex}}</h2>
+  <!-- {{ }} 简单运算-->
+  <h2 style="color: springgreen">20 ＋ 10 = {{num2 + num1}}</h2>
+  <h2 style="color: springgreen">20 ÷ 10 = {{num2 / num1}}</h2>
+  <!-- {{ }} 字符串拼接-->
+  <h2 style="color: blueviolet">{{"姓名：" + name + " ， 年龄：" + age + " ， 性别：" + sex}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      message: "mustache语法",
+      name: "张三",
+      age: 30,
+      sex: "男",
+      num1: 10,
+      num2: 20
+    }
+  });
+
+</script>
+
+
+</body>
+</html>

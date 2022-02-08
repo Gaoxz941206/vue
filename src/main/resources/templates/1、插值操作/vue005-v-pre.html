@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <h2 style="color: springgreen">{{message}}</h2>
+  <!-- v-pre 不接表达式 将{{message}}文本显示，不解析 -->
+  <h2 style="color: blueviolet" v-pre>{{message}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      message: "你好啊！"
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+
+</body>
+</html>

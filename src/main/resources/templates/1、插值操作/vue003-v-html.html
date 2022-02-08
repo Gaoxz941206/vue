@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <!-- v-html="表达式" 对表达式进行HTML格式解析，并展示 -->
+  <h2 style="color: red" v-html="url"></h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      url: "<a href='http://www.baidu.com'>百度一下</a>"
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+
+</body>
+</html>

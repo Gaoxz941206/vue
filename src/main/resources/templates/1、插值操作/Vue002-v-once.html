@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <h2 style="color: red">{{message}}</h2>
+  <!-- v-once 后面不跟表达式 用来固定页面加载时的内容，并且该内容不随着变量的改动而改动 -->
+  <h2 style="color: blue" v-once>{{message}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      message: "vue内容"
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+
+</body>
+</html>

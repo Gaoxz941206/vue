@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <!-- v-bind:属性="" 动态绑定属性的值 -->
+  <img v-bind:src="imgUrl"><br>
+  <a v-bind:href="aHref">百度一下</a>
+  <hr>
+  <!-- 语法糖简写 v-bind -->
+  <img :src="imgUrl"><br>
+  <a :href="aHref">百度一下</a>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      imgUrl: 'https://img2.baidu.com/it/u=123237851,2112639978&fm=253&app=53&size=w500&n=0&g=0n&f=png?sec=1646911352&t=52ed84d87102ec4c3daa6d59a7451ed5',
+      aHref: 'http://www.baidu.com'
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+
+</body>
+</html>
