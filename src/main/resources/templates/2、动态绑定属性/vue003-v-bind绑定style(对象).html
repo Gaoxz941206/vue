@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <!--
+      v-bind:style="{属性名：属性值}" 用来动态绑定style
+  -->
+  <h2 :style="{fontSize: fSize , color: fColor}">{{message}}</h2>
+  <!--
+      通过调用方法来动态绑定style
+  -->
+  <h2 :style="getStyles()">{{message}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      message: '你好啊',
+      fSize: '20px',
+      fColor: 'red',
+      ffSize: '30px',
+      ffColor: 'green'
+    },
+    methods: {
+      getStyles: function () {
+        return {fontSize: this.ffSize , color: this.ffColor}
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>

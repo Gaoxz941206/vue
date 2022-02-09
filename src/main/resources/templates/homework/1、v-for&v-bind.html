@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .showRed{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<div id="test01">
+  <ul>
+    <li :id="'#a'+index" v-for="item,index in movies" @click="click(index)">{{item}}</li>
+  </ul>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  window.onload = function () {
+    var dom = document.getElementById("#a"+0);
+    dom.className = "showRed"
+  };
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      movies: ['海贼王','火影忍者','龙珠','钢之炼金术师'],
+    },
+    methods: {
+      click: function (index) {
+        for (let i = 0; i < this.movies.length; i++) {
+          var dom = document.getElementById("#a"+i);
+          if (i !== index) {
+            dom.className = ""
+          }else {
+            dom.className = "showRed"
+          }
+        }
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>

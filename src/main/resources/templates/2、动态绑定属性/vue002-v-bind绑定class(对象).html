@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+
+  <style>
+    .active{
+      color: darkseagreen;
+    }
+  </style>
+
+</head>
+<body>
+
+<div id="test01">
+  <!--
+      v-bind:class="{对象}" ，通过对象的方式动态绑定class属性
+      v-bind:class="方法()" ，通过调用方法动态绑定class属性
+  -->
+  <h2 class="title" v-bind:class="{active: isActive , line: isLine}" @click="over">{{message}}</h2>
+  <h2 class="title" v-bind:class="getClasses1()" @click="over">{{message}}</h2>
+  <!--
+      v-bind:class="[]" ，通过数组动态绑定class属性
+          注：[]中有''引用时，只能将''中的内容以字符串的形式展示，并不会解析
+      以下结果显示：<h2 class="title aaaaa line">你好啊</h2>
+  -->
+  <h2 class="title" v-bind:class="[active , 'line']" @click="over">{{message}}</h2>
+  <!-- 通过调用方法获取数组 -->
+  <h2 class="title" v-bind:class="getClasses2()" @click="over">{{message}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      message: '你好啊',
+      isActive: true,
+      isLine: true,
+      active: 'aaaaa',
+      line: 'bbbbb'
+    },
+    methods: {
+      over: function () {
+        this.isActive = !this.isActive
+      },
+      getClasses1: function () {
+        return {active: this.isActive , line: this.isLine}
+      },
+      getClasses2: function () {
+        return [this.active , this.line]
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>
