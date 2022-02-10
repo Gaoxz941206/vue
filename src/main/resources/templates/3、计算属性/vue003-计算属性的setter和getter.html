@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <h2>{{fullName1}}</h2>
+  <hr>
+  <h2>{{fullName2}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      firstName1: 'Kobe',
+      lastName1: 'Bryant',
+      firstName2: 'LeBron',
+      lastName2: 'James'
+    },
+    methods: {
+
+    },
+    computed: { //计算属性其实本质是一个对象 里面可以定义很多属性
+      fullName1: {  //fullName1 是computed里面的一个属性， 所以在调用时不需要加()
+        //computed里面的属性都是具有set和get方法的
+        set: function (newValue) {  //set方法对fullName1进行赋值操作 ， 一般不会实现这个方法
+          let fullName = newValue.split(' ');
+          this.firstName1 = fullName[0];
+          this.lastName1 = fullName[1];
+        },
+        get: function () {  //get方法对fullName1进行取值操作
+          return this.firstName1 + ' ' + this.lastName1
+        }
+      },
+      //因为set方法一般不实现，所以只有get方法，一般简写为如下：
+      fullName2: function () {  //此方法不能对fullName2的属性进行赋值操作
+        return this.firstName2 + ' ' + this.lastName2
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>

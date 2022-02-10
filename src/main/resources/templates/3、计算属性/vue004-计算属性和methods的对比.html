@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+  <h2>{{fullName}}</h2>
+  <br>
+  <h2>{{getFullName()}}</h2>
+  <h2>{{getFullName()}}</h2>
+  <h2>{{getFullName()}}</h2>
+  <h2>{{getFullName()}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      firstName: 'Kobe',
+      lastName: 'Bryant'
+    },
+    methods: {  //每调用一次就需要重新执行一次，多次调用时效率较低
+      getFullName: function () {
+        console.log('getFullName 方法');
+        return this.firstName + ' ' + this.lastName
+      }
+    },
+    computed: { //当数据没有发生改变时，只会执行一次，然后存入缓存，多次调用效率较高  当数据发生变化时就会重新执行
+      fullName: function () {
+        console.log('fullName 属性');
+        return this.firstName + ' ' + this.lastName
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>
