@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <!-- :style="[]" 动态绑定数组 其中style1、style2需要在vue中声明 -->
+  <h2 :style="[style1,style2]">{{message}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      message: '你好啊',
+      style1: {backgroundColor: "green"},
+      style2: {fontSize: "50px"}
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+</body>
+</html>

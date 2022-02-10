@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <!-- 使用计算属性时不需要加() -->
+  <h2>{{fullName}}</h2>
+  <hr>
+  <!-- 使用方法时需要加() -->
+  <h2>{{getFullName()}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      firstName: "LeBron",
+      lastName: "James"
+    },
+    computed: {   //计算属性
+      fullName: function () {
+        return this.firstName + ' ' + this.lastName
+      }
+    },
+    methods: {
+      getFullName() {
+        return this.firstName + ' ' + this.lastName
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>
