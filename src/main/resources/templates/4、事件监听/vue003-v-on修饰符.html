@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<!-- 1、 .stop修饰符  用来停止冒泡， 如：点击按钮1不触发div的点击事件 -->
+<div id="test01" @click="divClick">
+  aaaa
+  <button @click.stop="btn1Click">按钮1</button>
+</div>
+<br>
+
+<div id="test02">
+  <!-- 2、 .prevent修饰符 用来阻止默认的事件， 如：阻止submit的提交 -->
+  <form action="baidu">
+    <input type="submit" @click.prevent="submitClick" value="提交">
+  </form>
+  <br>
+
+  <!-- 3、 .keyCode键值 keyAlias键别名 -->
+  <input type="text" @keyup.13="keyup"><br> <!-- 监听回车键1 -->
+  <input type="text" @keyup.enter="keyup"> <!-- 监听回车键2 -->
+  <br><br>
+
+  <!-- 4、 .once修饰符  方法只调用一次 -->
+  <button @click.once="btn2Click">按钮2</button>
+
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+
+    },
+    methods: {
+      divClick(){
+        console.log('divClick');
+      },
+      btn1Click() {
+        console.log('btn1Click');
+      }
+    }
+  });
+
+  const vue2 = new Vue({
+    el: '#test02',
+    data: {
+
+    },
+    methods: {
+      submitClick() {
+        console.log('submitClick');
+      },
+      keyup(){
+        console.log('enterClick');
+      },
+      btn2Click() {
+        console.log('btn2Click');
+      }
+    }
+  })
+
+</script>
+
+
+</body>
+</html>
