@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <ul>
+    <!-- 无下标遍历 -->
+    <li v-for="item in names">{{item}}</li>
+  </ul>
+
+  <ul>
+    <!-- 带下标遍历 -->
+    <li v-for="(item,index) in names">{{index+1}}、{{item}}</li>
+  </ul>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      names: ['Curry', 'Kobe', 'James']
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+</body>
+</html>

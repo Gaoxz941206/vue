@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <ul>
+    <!--
+        vue渲染dom时，如果元素的key与对应内容相同时，在需要重新渲染时就可以直接复用
+            注：key与内容需保持一致
+     -->
+    <li v-for="(item,index) in arr" :key="item">{{item}}</li>
+  </ul>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      arr: ['A', 'B', 'C', 'D']
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+</body>
+</html>

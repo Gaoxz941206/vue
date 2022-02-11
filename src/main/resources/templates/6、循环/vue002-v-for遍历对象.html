@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <ul>
+    <!-- 1、 直接遍历： item取出来的是value -->
+    <li v-for="item in user">{{item}}</li>
+  </ul>
+
+  <ul>
+    <!-- 2、 key - value 遍历： 格式(value , key)，value在前 -->
+    <li v-for="(value , key) in user">{{key}}：{{value}}</li>
+  </ul>
+
+  <ul>
+    <!-- 3、 带下标key - value 遍历： 格式(value , key , index)，value在前 -->
+    <li v-for="(value , key ,index ) in user">{{index}} ---> {{key}}：{{value}}</li>
+  </ul>
+
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      user: {
+        name: "张三",
+        age: 32,
+        sex: '男',
+        email: 'zhangsan@zs.com'
+      }
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+</body>
+</html>
