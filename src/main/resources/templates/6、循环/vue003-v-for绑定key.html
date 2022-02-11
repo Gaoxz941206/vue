@@ -11,6 +11,7 @@
     <!--
         vue渲染dom时，如果元素的key与对应内容相同时，在需要重新渲染时就可以直接复用
             注：key与内容需保持一致
+               数组的内容不能重复
      -->
     <li v-for="(item,index) in arr" :key="item">{{item}}</li>
   </ul>
