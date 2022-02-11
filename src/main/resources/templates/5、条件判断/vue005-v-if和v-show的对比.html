@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <!--
+      v-if:  当条件是false时，元素根本就不会被创建
+      v-show:   当条件是false时，只是对元素加了style="display: none;"样式
+          当需要频繁展示和隐藏时，使用v-show；
+          当只需要一次展示或隐藏时，使用v-if
+  -->
+  <h2 id="if" v-if="isShow">{{message}}</h2>
+  <h2 id="show" v-show="isShow">{{message}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      message: '你好啊',
+      isShow: true
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+</body>
+</html>

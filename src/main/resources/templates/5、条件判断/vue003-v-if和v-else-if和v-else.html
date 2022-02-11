@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <h2 v-if="score >= 90">优秀</h2>
+  <h2 v-else-if="score >= 75">良好</h2>
+  <h2 v-else-if="score >= 60">及格</h2>
+  <h2 v-else>不及格</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      score: 78
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+</body>
+</html>

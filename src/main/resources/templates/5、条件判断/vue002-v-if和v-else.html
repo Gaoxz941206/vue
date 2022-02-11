@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <h2 v-if="flag">结果为true</h2>
+  <h2 v-else>结果为false</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      flag: true
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .tip{
+      color: dimgray;
+      font-size: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="test01">
+  <div v-if="isUser">
+    账号：<input type="text" placeholder="用户账号">
+  </div>
+  <div v-else><!-- key="" 用来解决vue中dom复用的问题，当同类型dom的key不同时，dom不复用 -->
+    邮箱：<input type="text" placeholder="用户邮箱" key="email">
+  </div><br>
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <span class="tip" @click="switchType">使用{{text}}登录</span>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      isUser: true,
+      text: '邮箱'
+    },
+    methods: {
+      switchType(){
+        this.isUser = !this.isUser;
+        if (this.text === '邮箱'){
+          this.text = '账号'
+        }else {
+          this.text = '邮箱'
+        }
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>
