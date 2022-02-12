@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <ul>
+    <li v-for="item in letters">{{item}}</li>
+  </ul>
+  <button @click="pushClick">push</button><br>
+  <button @click="popClick">pop</button><br>
+  <button @click="shiftClick">shift</button><br>
+  <button @click="unshiftClick">unshift</button><br>
+  <button @click="spliceClick">splice</button><br>
+  <button @click="sortClick">sort</button><br>
+  <button @click="reverseClick">reverse</button><br>
+  <button @click="indexClick">通过索引替换</button><br>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      letters: ['v','s','a','g','t','j','r']
+    },
+    methods: {
+      pushClick(){
+        //1、push(...args[])方法：在数组末尾添加若干元素   是响应式的
+        this.letters.push('AAA','BBB')
+      },
+      popClick(){
+        //2、pop()方法：删除数组中的最后一个元素   是响应式的
+        this.letters.pop()
+      },
+      shiftClick(){
+        //3、shift()方法：删除数组中的第一个元素   是响应式的
+        this.letters.shift()
+      },
+      unshiftClick(){
+        //4、unshift(...args[])方法：在数组前面添加若干元素  是响应式的
+        this.letters.unshift('CCC','DDD')
+      },
+      spliceClick(){
+        /*
+          5、splice()有两个重载方法：      都是响应式的
+              splice(start: number, deleteCount: number, ...args[])
+                  参数说明：start：起始下标
+                            deleteCount：删除元素的个数，当为0时表示从起始下标位置新插入元素
+                            ...args[]：新添加的元素
+              splice(start: number, deleteCount?: number)
+                  参数说明：start：其实下标
+                            deleteCount：删除元素的个数
+         */
+        //this.letters.splice(1,2,'aaa','bbb')  //从下标1开始删除2个元素，再将'aaa','bbb'按顺序插入原下标1的位置
+        //this.letters.splice(1,2)  //从下标1开始删除2个元素
+        this.letters.splice(2,1,'@@@')  //将下标为2的元素替换为‘@@@’
+      },
+      sortClick(){
+        //6、sort()方法：对数组进行排序    是响应式的
+        this.letters.sort()
+      },
+      reverseClick(){
+        //7、reverse()方法：将数组进行反转排序   是响应式的
+        this.letters.reverse()
+      },
+      indexClick(){
+        //8、通过索引替换元素    非响应式的
+        this.letters[3] = 'WWW'
+      }
+    }
+  });
+
+</script>
+
+
+</body>
+</html>
