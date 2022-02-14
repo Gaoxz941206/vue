@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <span v-for="num in arrFilter">{{num}}&nbsp;&nbsp;&nbsp;</span><br>
+  <span v-for="num in arrMap">{{num}}&nbsp;&nbsp;&nbsp;</span><br>
+  <span>{{arrReduce}}&nbsp;&nbsp;&nbsp;</span><br>
+</div>
+
+<div id="test02">
+  <h3>使用数组的高阶函数，完成以下要求：</h3>
+  <h3>&nbsp;&nbsp;选出数组中小于10的数，每个乘以2，最终求和</h3>
+  <h3>&nbsp;&nbsp;数组[3,9,18,11,4,14,7,21]</h3>
+  <h2 style="color:red;">计算结果：{{result}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue2 = new Vue({
+    el: '#test02',
+    data: {
+      nums: [3,9,18,11,4,14,7,21]
+    },
+    computed: {
+      result(){
+        return this.nums.filter(function (n) {
+          return n < 10
+        }).map(function (n) {
+          return n * 2
+        }).reduce(function (preValue,n) {
+          return preValue + n
+        }, 0)
+      }
+    }
+  });
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      nums: [10,60,90,30,50,70,40,20,80]
+    },
+    methods: {
+
+    },
+    computed: {
+      arrFilter(){
+        /*
+            nums.filter(function(n){})  返回值：数组
+                回调函数：function(n){}  返回值：boolean
+                回调函数在数组遍历时进行回调，参数n是每次遍历的元素，
+                将所有符合条件的元素添加到新的数组并进行返回
+        */
+        return this.nums.filter(function (n) {
+          return n <= 55
+        })
+      },
+      arrMap(){
+        /*
+            nums.map(function(n){})   返回值：数组
+                回调函数：function(n){} 返回值：任意
+                回调函数在数组遍历时进行回调，参数n是每次遍历的元素，
+                将进行运算后的元素添加到新的数组并进行返回
+         */
+        return this.nums.map(function(n){
+          return n  * 2
+        })
+      },
+      arrReduce(){
+        /*
+            nums.reduce((function(preValue,n){},initValue)  返回值：任意
+                参数：初始化值：initValue
+                      回调函数function(preValue,n)    返回值：任意
+                      回调函数在数组遍历时进行回调，参数n是每次遍历的元素，
+                      参数preValue是上一次遍历的返回值（如果是第一次遍历则为初始化值），
+                      返回任意计算结果
+         */
+        return this.nums.reduce(function (preValue,n) {
+          return preValue + n
+        } , 0)
+      }
+    }
+  });
+
+</script>
+
+
+</body>
+</html>
