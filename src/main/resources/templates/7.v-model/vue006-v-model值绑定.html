@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <label v-for="(item,index) in originalSelects" :id="'ID'+index+item">
+    <input type="checkbox" :value="item" :id="'ID'+index+item" v-model="userSelected">{{item}}
+  </label>
+  <h2>用户选择的内容是：{{userSelected}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      originalSelects: ['a','b','c','d','e','f'],   //原始数组，需要动态展示到页面
+      userSelected: [] //用来保存用户选择的内容
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+
+</body>
+</html>

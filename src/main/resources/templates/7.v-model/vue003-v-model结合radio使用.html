@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <label for="male">
+    <!-- 通过v-model对radio进行双线绑定，当绑定对象为同一个值时，radio的值互斥 -->
+    <input type="radio" id="male" value="男" v-model="sex">男
+  </label>
+
+  <label for="female">
+    <input type="radio" id="female" value="女" v-model="sex">女
+  </label>
+
+  <h2>单选按钮选中的结果是：{{sex}}</h2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      sex: '男'
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+
+</body>
+</html>

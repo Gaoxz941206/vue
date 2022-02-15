@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+
+  <!-- select 单选 -->
+  <select name="fruit" v-model="fruit">
+    <option value="苹果">苹果</option>
+    <option value="香蕉">香蕉</option>
+    <option value="橘子">橘子</option>
+    <option value="柠檬">柠檬</option>
+  </select>
+  <h2>您选择的水果是：{{fruit}}</h2>
+
+  <hr>
+
+  <!-- select 多选 加multiple属性，按住Ctrl实现多选  非常少用 -->
+  <select name="fruits" multiple v-model="fruits">
+    <option value="苹果">苹果</option>
+    <option value="香蕉">香蕉</option>
+    <option value="橘子">橘子</option>
+    <option value="柠檬">柠檬</option>
+  </select>
+  <h2>您选中的水果有：{{fruits}}</h2>
+
+  <hr>
+  <!-- mustache语法实现三目运算 -->
+  <h1 style="color:red">{{num == 1 ? '等于1' : '不等于1'}}</h1>
+
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      fruit: '香蕉',
+      fruits: [],
+      num: 1
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+
+</body>
+</html>
