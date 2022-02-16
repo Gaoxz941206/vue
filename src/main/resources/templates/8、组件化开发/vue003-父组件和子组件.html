@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <comp2></comp2>
+  <!--<comp1></comp1>--><!-- 不能被解析，需要在vue中注册 -->
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  //创建第一个组件
+  const comp1 = Vue.extend({
+    template: `
+      <div>
+        <h2>我是标题1</h2>
+        <p>我是内容：哈哈哈</p>
+      </div>
+    `
+  });
+
+  //创建第二个组件
+  const comp2 = Vue.extend({
+    template: `
+      <div>
+        <h2>我是标题2</h2>
+        <p>我是内容：呵呵呵</p>
+        <comp1></comp1>
+      </div>
+    `,
+    // 在comp2组件中注册的组件，被称为comp2的子组件，可以在template中使用
+    components: {
+      comp1: comp1  //comp1 是comp2的子组件
+    }
+  });
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+
+    },
+    methods: {
+
+    },
+    components: {
+      comp2: comp2
+    }
+  });
+
+</script>
+
+
+</body>
+</html>
