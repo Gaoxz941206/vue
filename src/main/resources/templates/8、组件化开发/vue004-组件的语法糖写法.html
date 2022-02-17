@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <comp1></comp1>
+  <comp2></comp2>
+</div>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  //组件语法糖写法（全局组件）
+  //语法糖的写法：直接用template对象代替Vue.extend()，实际上的本质是一样的
+  Vue.component('comp1',{
+    template: `
+      <div>
+        <h2>我是语法糖简写的<font style="color: red">全局</font>组件</h2>
+        <p>我是内容：哈哈哈哈</p>
+      </div>
+    `
+  });
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+
+    },
+    methods: {
+
+    },
+    components: {
+      comp2: {
+        template: `
+          <div>
+            <h2>我是语法糖简写的<font style="color: blue">局部</font>组件</h2>
+            <p>我是内容：呵呵呵呵</p>
+          </div>
+        `
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>

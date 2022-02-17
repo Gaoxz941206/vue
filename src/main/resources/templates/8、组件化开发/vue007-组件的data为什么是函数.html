@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <!-- 组件之间数据互不影响 -->
+  <comp1></comp1>
+  <comp1></comp1>
+  <comp1></comp1>
+</div>
+
+<template id="comp1">
+  <div>
+    <h2>当前计数：{{num}}</h2>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+  </div>
+</template>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  Vue.component('comp1',{
+    template: '#comp1',
+    /*
+      当组件被复用时，每次调用data函数就会得到不一样的对象，因此组件之间不会相互影响，彼此独立
+          另：若需要共享数据，可以返回const定义的变量，但是基本不用
+     */
+    data(){
+      return {
+        num: 0
+      }
+    },
+    methods: {
+      increment(){
+        this.num++
+      },
+      decrement(){
+        this.num--
+      }
+    }
+  });
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+</body>
+</html>

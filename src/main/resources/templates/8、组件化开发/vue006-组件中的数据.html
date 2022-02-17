@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <comp1></comp1>
+  <comp2></comp2>
+</div>
+
+<!-- 使用template标签进行分离 -->
+<template id="comp1">
+  <div>
+    <h2>{{message1}}</h2>
+  </div>
+</template>
+
+<template id="comp2">
+  <div>
+    <h2>{{message2}}</h2>
+  </div>
+</template>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  //全局组件
+  Vue.component('comp1',{
+    template: '#comp1',
+    /*
+        组件中的数据，存放在组件里面的data中，组件不能使用vue中的data数据
+            注：组件的data必须是函数（不能是属性），该函数return一个对象，对象里面包含数据
+     */
+    data(){
+      return {
+        message1: '我是全局组件'
+      }
+    }
+  });
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+
+    },
+    methods: {
+
+    },
+    components: {
+      comp2: {
+        template: '#comp2',
+        data(){
+          return {
+            message2: '我是局部组件'
+          }
+        }
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>

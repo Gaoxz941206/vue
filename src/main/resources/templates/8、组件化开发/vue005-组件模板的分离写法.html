@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <comp1></comp1>
+  <comp2></comp2>
+</div>
+
+<!-- template分离写法1、script标签 -->
+<script type="text/x-template" id="comp1">
+  <div>
+    <h2>我是<font style="color: red">全局</font>标题</h2>
+    <p>我是内容：哈哈哈哈</p>
+  </div>
+</script>
+
+<!-- template分离写法2、template标签 -->
+<template id="comp2">
+  <div>
+    <h2>我是<font style="color: blue">局部</font>标题</h2>
+    <p>我是内容：呵呵呵呵</p>
+  </div>
+</template>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  //使用全局注册
+  Vue.component('comp1',{
+    template: '#comp1'  //通过id绑定template对象
+  });
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+
+    },
+    methods: {
+
+    },
+    //使用局部注册
+    components: {
+      comp2: {
+        template: '#comp2'  //通过id绑定template对象
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>
