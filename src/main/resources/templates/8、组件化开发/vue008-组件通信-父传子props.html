@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <!--
+      需要接收父组件的数据时，使用v-bind:来绑定props中的变量和父组件中的数据
+  -->
+  <comp :c_movies="movies" :c_message="message"></comp>
+</div>
+
+
+<template id="comp">
+  <div>
+    <p v-for="item in c_movies">{{item}}</p>
+    <h2>{{c_message}}</h2>
+  </div>
+</template>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const comp = {
+    template: '#comp',
+    data(){
+      //必须要返回
+      return {}
+    },
+    /*
+        接收父组件数据props:
+            第一种方式：数组  数组中的每一个元素都可以看做是一个子组件的变量，用来接收父组件的数据
+     */
+    props: ['c_message','c_movies']
+  };
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      message: '父组件向子组件传递数据--->props',
+      movies: ['哈利波特','海贼王','火影忍者','龙珠']
+    },
+    components: {
+      comp: comp
+    },
+    methods: {
+
+    }
+  });
+
+</script>
+
+
+</body>
+</html>
