@@ -13,7 +13,6 @@
   <comp :c_movies="movies" :c_message="message"></comp>
 </div>
 
-
 <template id="comp">
   <div>
     <p v-for="item in c_movies">{{item}}</p>
@@ -34,7 +33,27 @@
         接收父组件数据props:
             第一种方式：数组  数组中的每一个元素都可以看做是一个子组件的变量，用来接收父组件的数据
      */
-    props: ['c_message','c_movies']
+    //props: ['c_message','c_movies'] //第一种写法
+    props: {
+      /*
+        第二种方式：对象  可以指定props中变量的类型和默认值
+            具体类型有：String、Number、Boolean、Array、Object、Date、Function、Symbol(自定义类型)
+      */
+      //c_message: String,  只指定类型
+      c_message: {
+        type: String, //指定类型
+        default: '哈哈哈哈', //指定默认值
+        required: true  //表示c_message为必传值
+      },
+      c_movies: {
+        type: Array,
+        //default: ['123','234','345']  当指定的类型是Object或Array时，默认值必须是函数类型
+        default(){
+          return ['123','234','345']
+        },
+        required: true
+      }
+    }
   };
 
   const vue1 = new Vue({

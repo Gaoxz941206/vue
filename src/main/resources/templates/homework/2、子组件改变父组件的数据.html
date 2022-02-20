@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <h2>当前计数：{{counter}}</h2>
+  <comp @child-add="compAdd" @child-sub="compSub"></comp>
+</div>
+
+<template id="comp">
+  <div>
+    <button @click="add">+</button>
+    <button @click="sub">-</button>
+  </div>
+</template>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const comp = {
+    template: '#comp',
+    methods: {
+      add(){
+        this.$emit('child-add')
+      },
+      sub(){
+        this.$emit('child-sub')
+      }
+    }
+  }
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      counter: 10
+    },
+    methods: {
+      compAdd(){
+        this.counter ++
+      },
+      compSub(){
+        this.counter --
+      }
+    },
+    components: {
+      comp
+    }
+  });
+
+</script>
+
+</body>
+</html>

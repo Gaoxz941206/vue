@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <!-- v-bind: 目前版本不支持驼峰命名规则，可以使用'-'进行替换 -->
+  <comp :c-info="info"></comp>
+</div>
+
+<template id="comp">
+  <div> <!-- template 中需要有一个根元素，一般为<div></div> -->
+    <h2 v-for="item in cInfo">{{item}}</h2>
+  </div>
+</template>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const comp = {
+    template: '#comp',
+    props: {
+      cInfo: {  //当props中的变量使用驼峰时，在接收父组件的数据时必须使用'-'替换驼峰规则
+        type: Object,
+        default(){
+          return {
+            name: '姓名',
+            age: 18,
+            email: 'email@mail.com'
+          }
+        }
+      }
+    }
+  };
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      info: {
+        name: '张三',
+        age: 32,
+        email: 'zhangsan@zs.com'
+      }
+    },
+    methods: {
+
+    },
+    components: {
+      comp
+    }
+  });
+
+</script>
+
+</body>
+</html>
