@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <comp1></comp1>
+  <button @click="add">加法</button><br>
+  <comp2></comp2>
+  <button @click="multi">乘法</button>
+  <br>
+  <button @click="childrenClick">$children</button>
+
+  <hr>
+
+  <comp1 ref="a"></comp1>
+  <button @click="add">加法</button><br>
+  <comp2 ref="b"></comp2>
+  <button @click="multi">乘法</button>
+  <br>
+  <button @click="refsClick">$refs</button>
+
+</div>
+
+<template id="comp1">
+  <div>
+    <h2>{{message}}</h2>
+  </div>
+</template>
+
+<template id="comp2">
+  <div>
+    <h2>{{message}}</h2>
+  </div>
+</template>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const comp1 = {
+    template: '#comp1',
+    data(){
+      return {
+        message: '我是子组件1'
+      }
+    },
+    methods: {
+      numAdd(num1 , num2){
+        console.log('两数之和是：' + (num1 + num2));
+      }
+    }
+  };
+
+  const comp2 = {
+    template: '#comp2',
+    data(){
+      return {
+        message: '我是子组件2'
+      }
+    },
+    methods: {
+      numMulti(num1 , num2){
+        console.log('两数之积是：' + (num1 * num2));
+      }
+    }
+  };
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+
+    },
+    methods: {
+      childrenClick(){
+        console.log(this.$children);  //返回数组，包含所有子组件对象
+      },
+      refsClick(){
+        console.log(this.$refs);    //返回key-value 所有子组件对象
+      },
+      multi(){
+        this.$children[1].numMulti(3 , 6);  //调用子组件的方法
+        console.log('使用$children方式--->'+this.$children[1].message);   //调用子组件的属性
+        console.log('使用$refs方式--->' + this.$refs.a.message);
+      },
+      add(){
+        this.$children[0].numAdd(4, 9);
+        console.log('使用$children方式--->'+this.$children[0].message);
+        console.log('使用$refs方式--->'+this.$refs.b.message);
+      }
+    },
+    components: {
+      comp1,
+      comp2
+    }
+  });
+
+</script>
+
+</body>
+</html>
