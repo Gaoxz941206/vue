@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <!-- 1、组件标签之间无任何元素时，会使用slot插槽的默认元素 -->
+  <comp></comp>
+  <!-- 2、组件标签之间有元素时，会替换掉slot插槽的默认元素 -->
+  <comp><button>替换按钮</button></comp>
+  <!-- 3、组件标签之间有多个元素时，会一起替换掉slot插槽的默认元素 -->
+  <comp>
+    <i>我是i元素</i><br>
+    <span>我是span元素</span>
+    <p>我是p元素</p>
+  </comp>
+</div>
+
+<template id="comp">
+  <div>
+    <h2>我是组件</h2>
+    <slot><button>默认按钮</button></slot>
+  </div>
+</template>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const comp = {
+    template: '#comp'
+  }
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+
+    },
+    methods: {
+
+    },
+    components: {
+      comp
+    }
+  });
+
+</script>
+
+</body>
+</html>

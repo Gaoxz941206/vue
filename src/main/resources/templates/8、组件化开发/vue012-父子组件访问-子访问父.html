@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <comp1></comp1>
+</div>
+
+<template id="comp1">
+  <div>
+    <h2>我是comp1组件</h2>
+    <comp2></comp2>
+  </div>
+</template>
+
+<template id="comp2">
+  <div>
+    <h2>我是comp2组件</h2>
+    <button @click="parentClick">显示父组件</button>
+    <button @click="rootClick">显示根组件</button>
+  </div>
+</template>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  /**
+   *    注： 在子组件中访问父组件的情况极少，偶尔会有访问根组件的情况
+   *    所以：$parent 极少用    $root 偶尔用
+   */
+  //子组件需要在父组件的前面定义
+  const comp2 = {
+    template: '#comp2',
+    methods: {
+      parentClick(){
+        console.log(this.$parent);    //访问父组件 VueComponent类型
+        console.log(this.$parent.text);   //访问父组件的data属性
+      },
+      rootClick(){
+        console.log(this.$root);    //访问根组件 Vue类型
+        console.log(this.$root.message);    //访问根组件的data属性
+      }
+    }
+  };
+
+  const comp1 = {
+    template: '#comp1',
+    data(){
+      return{
+        text: '我是comp1中的text'
+      }
+    },
+    components: {
+      comp2
+    }
+  };
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      message: '我是vue中的message'
+    },
+    methods: {
+
+    },
+    components: {
+      comp1
+    }
+  });
+
+</script>
+
+</body>
+</html>
