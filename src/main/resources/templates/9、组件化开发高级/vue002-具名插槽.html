@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <comp>
+    <!-- slot="" 对指定name的slot进行替换 -->
+    <span slot="center">我替换了name="center"的插槽</span>
+  </comp>
+</div>
+
+<template id="comp">
+  <div>
+    <!-- 如果需要对具体某一个slot插槽进行替换，则需要指定slot的name -->
+    <slot name="left">左插槽</slot>
+    <slot name="center">中插槽</slot>
+    <slot name="right">右插槽</slot>
+  </div>
+</template>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const comp = {
+    template: '#comp',
+  };
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+
+    },
+    methods: {
+
+    },
+    components: {
+      comp
+    }
+  });
+
+</script>
+
+</body>
+</html>

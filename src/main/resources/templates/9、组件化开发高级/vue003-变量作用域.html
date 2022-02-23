@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <!-- 由于comp是div(Vue)实例下的元素，所以使用的是Vue中的变量 true 显示 -->
+  <comp v-show="isShow"></comp>
+</div>
+
+<template id="comp">
+  <div>
+    <h2>我是组件</h2>
+    <!-- 由于p标签属于template(组件)实例下的元素，所以使用的是template(组件)中的变量 false 不显示  -->
+    <p v-show="isShow">我是段落标签</p>
+  </div>
+</template>
+
+<script type="text/javascript" src="../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const comp = {
+    template: '#comp',
+    data(){
+      return {
+        isShow: false
+      }
+    }
+  };
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      isShow: true
+    },
+    methods: {
+
+    },
+    components: {
+      comp
+    }
+  });
+
+</script>
+
+</body>
+</html>
