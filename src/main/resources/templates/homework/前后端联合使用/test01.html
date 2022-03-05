@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+<div id="test01">
+  <h2>{{message}}</h2><br>
+  <button @click="switchText">切换</button>
+</div>
+
+<script src="https://cdn.staticfile.org/axios/0.18.0/axios.min.js"></script>
+<script type="text/javascript" src="../../../static/vue/vue.js"></script>
+<script type="text/javascript">
+
+  const vue1 = new Vue({
+    el: '#test01',
+    data: {
+      message: '初始值',
+    },
+    methods: {
+      switchText(){
+        axios
+            .get("http://localhost:8080/test01")
+            .then(resp => this.message = resp.data)
+            .catch(function (error) {
+              console.log('没有接受到数据');
+            })
+      }
+    }
+  });
+
+</script>
+
+</body>
+</html>
